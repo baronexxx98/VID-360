@@ -27,7 +27,8 @@ export const medicalProtocolSchema = {
 };
 
 export const getEmergencyGuidance = async (description: string, patientContext: string, imageBase64?: string) => {
-  const model = 'gemini-3-pro-preview';
+  // Alterado para Flash para máxima velocidade em emergências
+  const model = 'gemini-3-flash-preview';
   
   const parts: any[] = [
     { text: `SITUAÇÃO DE EMERGÊNCIA NO BRASIL: ${description}. VÍTIMA: ${patientContext}.` }
@@ -65,7 +66,7 @@ export const getEmergencyGuidance = async (description: string, patientContext: 
 
 export const findNearbyHospitals = async (lat: number, lng: number) => {
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
+    model: "gemini-3-flash-preview",
     contents: "Quais são os hospitais, pronto-socorros e unidades de saúde (UPA) mais próximos e abertos agora? Liste nome e distância aproximada.",
     config: {
       tools: [{ googleMaps: {} }],

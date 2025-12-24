@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'vida-360-v2';
+const CACHE_NAME = 'vida-360-v3';
 const urlsToCache = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -23,9 +24,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Retorna o cache ou busca na rede
         return response || fetch(event.request).catch(() => {
-            // Fallback para quando estiver offline e o recurso não estiver no cache
             if (event.request.mode === 'navigate') {
                 return caches.match('./index.html');
             }

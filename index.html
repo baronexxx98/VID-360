@@ -57,7 +57,7 @@
         }
     </style>
 
-    <!-- Import Map Consolidado e sem conflitos -->
+    <!-- Import Map Unificado - React 19.0.0 Estrito -->
     <script type="importmap">
 {
   "imports": {
@@ -75,17 +75,14 @@
 <body class="text-gray-900 antialiased">
     <div id="root"></div>
     
-    <!-- Script Principal como Módulo -->
+    <!-- Início do App -->
     <script type="module" src="./index.tsx"></script>
 
     <script>
+        // Registro simplificado do Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').then(reg => {
-                    console.log('VIDA 360: Pronto para emergências');
-                }).catch(err => {
-                    console.error('Falha no SW:', err);
-                });
+                navigator.serviceWorker.register('./sw.js').catch(e => console.error('SW Error:', e));
             });
         }
     </script>

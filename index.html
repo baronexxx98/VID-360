@@ -23,6 +23,7 @@
             user-select: none;
             background-color: #000;
             margin: 0;
+            overflow-x: hidden;
         }
         #root:empty {
             display: flex;
@@ -55,7 +56,9 @@
             padding-bottom: env(safe-area-inset-bottom);
         }
     </style>
-<script type="importmap">
+
+    <!-- Import Map Consolidado e sem conflitos -->
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@19.0.0",
@@ -69,19 +72,19 @@
 }
 </script>
 </head>
-<body class="text-gray-900 overflow-x-hidden antialiased">
+<body class="text-gray-900 antialiased">
     <div id="root"></div>
     
-    <!-- Script Principal -->
+    <!-- Script Principal como Módulo -->
     <script type="module" src="./index.tsx"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js').then(reg => {
-                    console.log('VIDA 360: Escudo de Resgate Offline Ativo');
+                    console.log('VIDA 360: Pronto para emergências');
                 }).catch(err => {
-                    console.error('Falha ao registrar Proteção Offline:', err);
+                    console.error('Falha no SW:', err);
                 });
             });
         }

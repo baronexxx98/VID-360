@@ -57,7 +57,7 @@
         }
     </style>
 
-    <!-- Import Map Unificado - React 19.0.0 Estrito -->
+    <!-- Import Map Consolidado - React 19 Estável -->
     <script type="importmap">
 {
   "imports": {
@@ -75,14 +75,13 @@
 <body class="text-gray-900 antialiased">
     <div id="root"></div>
     
-    <!-- Início do App -->
+    <!-- Bootstrap do App -->
     <script type="module" src="./index.tsx"></script>
 
     <script>
-        // Registro simplificado do Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch(e => console.error('SW Error:', e));
+                navigator.serviceWorker.register('./sw.js').catch(e => console.error('SW Failed:', e));
             });
         }
     </script>
